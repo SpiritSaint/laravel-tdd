@@ -5,9 +5,12 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\User;
 
 class UsersTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_users_index_route()
     {
         $user = factory(User::class)->create();
