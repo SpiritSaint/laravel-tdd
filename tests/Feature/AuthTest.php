@@ -10,9 +10,9 @@ use App\User;
 
 class AuthTest extends TestCase
 {
-	use RefreshDatabase;
+    use RefreshDatabase;
 
-   	public function test_redirect_if_authenticated()
+    public function test_redirect_if_authenticated()
     {
         $user = factory(User::class)->create();
 
@@ -31,23 +31,23 @@ class AuthTest extends TestCase
 
     public function test_register_route()
     {
-    	$user = factory(User::class)->make();
+        $user = factory(User::class)->make();
 
-    	$password = substr(md5(mt_rand()), 0, 6);
+        $password = substr(md5(mt_rand()), 0, 6);
 
-    	$response = $this->post('/register', [
-    		'name' => $user->name,
-    		'email' => $user->email,
-    		'password' => $password,
-    		'password_confirmation' => $password,
-    	]);
+        $response = $this->post('/register', [
+            'name' => $user->name,
+            'email' => $user->email,
+            'password' => $password,
+            'password_confirmation' => $password,
+        ]);
 
-    	$response->assertRedirect('home');
+        $response->assertRedirect('home');
     }
 
     public function test_home_route()
     {
-    	$user = factory(User::class)->create();
+        $user = factory(User::class)->create();
 
         $response = $this->actingAs($user)
                          ->get('/home');
@@ -57,12 +57,12 @@ class AuthTest extends TestCase
 
     public function test_reset_password_constructor()
     {
-    	$user = factory(User::class)->make();
+        $user = factory(User::class)->make();
 
-    	$response = $this->post('/password/reset', [
-    		'email' => $user->email,
-    	]);
+        $response = $this->post('/password/reset', [
+            'email' => $user->email,
+        ]);
 
-    	$response->assertStatus(302);
+        $response->assertStatus(302);
     }
 }
