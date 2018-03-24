@@ -40,4 +40,14 @@ class UsersTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_users_update_route()
+    {
+        $user = factory(User::class)->create();
+
+        $response = $this->actingAs($user)
+                        ->put('/users/'. $user->id);
+
+        $response->assertStatus(200);
+    }
 }
