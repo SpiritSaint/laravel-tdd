@@ -45,9 +45,15 @@ class UsersTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $response = $this->actingAs($user)
-                        ->put('/users/'. $user->id);
+        $password = substr(md5(mt_rand()), 0, 6);
 
-        $response->assertStatus(200);
+        $response = $this->actingAs($user)
+                        ->put('/users/'. $user->id, [
+                            'name' => $user->name,
+                            'password' => $password,
+                            'password_confirmation' => $password,
+                        ]);
+
+        $response->assertRedirect('/users/'. $user->id);
     }
 }

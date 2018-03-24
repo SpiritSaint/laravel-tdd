@@ -8,6 +8,8 @@ use App\Http\Requests\Users\EditRequest;
 use App\Http\Requests\Users\ShowRequest;
 use App\Http\Requests\Users\UpdateRequest;
 
+use Illuminate\Support\Facades\Hash;
+
 class UsersController extends Controller
 {
     protected $users;
@@ -49,7 +51,7 @@ class UsersController extends Controller
      */
     public function edit(EditRequest $request, User $user)
     {
-        return view('users.edit', compact($user));
+        return view('users.edit')->with('user', $user);
     }
 
     /**
@@ -61,6 +63,11 @@ class UsersController extends Controller
      */
     public function update(UpdateRequest $request, User $user)
     {
-        
+        $user->update([
+            'name' => $request->name,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('users.show', $user);
     }
 }

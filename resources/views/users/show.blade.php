@@ -8,6 +8,12 @@
                 <i class="fa fa-users">&nbsp;</i> All
             </a>
 
+            @if($user->id === auth()->user()->id)
+            <a class="btn btn-warning" href="{{ route('users.edit', $user) }}">
+                <i class="fa fa-edit">&nbsp;</i> Edit
+            </a>
+            @endif
+
             <hr>
 
             <div class="card card-default">
