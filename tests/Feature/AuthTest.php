@@ -21,4 +21,27 @@ class AuthTest extends TestCase
 
         $response->assertRedirect('home');
     }
+
+    public function test_reset_password_route()
+    {
+        $response = $this->get('/password/reset');
+
+        $response->assertStatus(200);
+    }
+
+    public function test_register_route()
+    {
+    	$user = factory(User::class)->make();
+
+    	$password = substr(md5(mt_rand()), 0, 6);
+
+    	$response = $this->post('/register', [
+    		'name' => $user->name,
+    		'email' => $user->email,
+    		'password' => $password,
+    		'password_confirmation' => $password,
+    	]);
+
+    	$response->assertRedirect('home');
+    }
 }
