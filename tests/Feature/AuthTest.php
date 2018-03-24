@@ -54,4 +54,15 @@ class AuthTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_reset_password_constructor()
+    {
+    	$user = factory(User::class)->make();
+
+    	$response = $this->post('/password/reset', [
+    		'email' => $user->email,
+    	]);
+
+    	$response->assertStatus(302);
+    }
 }
