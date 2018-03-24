@@ -44,4 +44,14 @@ class AuthTest extends TestCase
 
     	$response->assertRedirect('home');
     }
+
+    public function test_home_route()
+    {
+    	$user = factory(User::class)->create();
+
+        $response = $this->actingAs($user)
+                         ->get('/home');
+
+        $response->assertStatus(200);
+    }
 }
