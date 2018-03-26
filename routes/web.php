@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('users', 'UsersController', ['only' => [
     'index', 'show', 'edit', 'update'
 ]]);
+
+Route::resource('admin/users', 'Admin\UsersController', ['as' => 'admin']);
