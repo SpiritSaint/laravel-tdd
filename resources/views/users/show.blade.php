@@ -19,6 +19,7 @@
             </nav>
 
             <h1 class="display-4 mt-5 mb-2">{{ $user->name }}</h1>
+            <h4>{{ $user->email }}</h4>
 
             <p class="lead mb-5">
                 @if(auth()->user() == $user)
