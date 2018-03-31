@@ -21,6 +21,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
  * @component AdminUserManagement
  */
 require('./components/admin-user-management');
+require('./components/admin-users-list');
 
 const app = new Vue({
     el: '#app'
