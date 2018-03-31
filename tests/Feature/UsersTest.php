@@ -18,7 +18,8 @@ class UsersTest extends TestCase
         $response = $this->actingAs($user)
                          ->get('/users');
 
-        $response->assertStatus(200);
+        $response->assertStatus(200)
+                 ->assertViewIs('users.index');
     }
 
     public function test_users_show_route()
@@ -28,7 +29,8 @@ class UsersTest extends TestCase
         $response = $this->actingAs($user)
                         ->get('/users/'. $user->id);
 
-        $response->assertStatus(200);
+        $response->assertStatus(200)
+                 ->assertViewIs('users.show');
     }
 
     public function test_users_edit_route()
@@ -38,7 +40,8 @@ class UsersTest extends TestCase
         $response = $this->actingAs($user)
                         ->get('/users/'. $user->id . '/edit');
 
-        $response->assertStatus(200);
+        $response->assertStatus(200)
+                 ->assertViewIs('users.edit');
     }
 
     public function test_users_update_route()
