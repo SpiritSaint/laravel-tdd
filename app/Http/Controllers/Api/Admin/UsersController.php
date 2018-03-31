@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Api\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
-use App\Http\Requests\Api\Admin\Users\IndexRequest;
+use App\Http\Requests\Api\Admin\Users\ShowRequest;
 use App\Http\Requests\Api\Admin\Users\UpgradeToAdminRequest;
 use App\Http\Requests\Api\Admin\Users\DowngradeToUserRequest;
 
 class UsersController extends Controller
 {
-    public function show(IndexRequest $request, User $user)
+    public function show(ShowRequest $request, User $user)
     {
     	return $user;
     }
