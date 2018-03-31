@@ -27,7 +27,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = $this->users->all();
+        $users = $this->users->simplePaginate(5);
 
         return view('users.index')->with('users', $users);
     }
@@ -68,6 +68,6 @@ class UsersController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('users.show', $user);
+        return $user;
     }
 }

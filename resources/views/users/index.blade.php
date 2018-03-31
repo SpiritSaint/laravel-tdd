@@ -23,10 +23,16 @@
 
                 @foreach($users as $user)
                 <div class="col-md-12 mb-3 mt-3">
-                    @include('users._partials.user-details', $user)
-                    <a class="btn btn-secondary" href="{{ route('users.show', $user) }}">
-                        <i class="fa fa-search">&nbsp;</i> View
-                    </a>
+                    <div class="row">
+                        <div class="col-9">    
+                            @include('users._partials.user-details', $user)
+                        </div>
+                        <div class="col-3 text-right">
+                            <a class="btn btn-secondary" href="{{ route('users.show', $user) }}">
+                                <i class="fa fa-search">&nbsp;</i> View
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 @if(! $loop->last)
                 <div class="col-md-12 mb-2 mt-2">
@@ -34,6 +40,12 @@
                 </div>
                 @endif
                 @endforeach
+
+                <div class="col-md-12">
+                    <div class="text-xs-center">
+                        {{ $users->render() }}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

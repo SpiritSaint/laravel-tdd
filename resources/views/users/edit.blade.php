@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<user-management :auth="{{ auth()->user() }}" :user="{{ $user }}" inline-template>
 <div class="container">
-    <form class="form" method="POST" action="{{ route('users.update', $user) }}">
+    <form class="form">
         <div class="row justify-content-center">
             <div class="col-md-8">
 
@@ -10,19 +11,43 @@
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Home') }}</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('users.index') }}">{{ __('Users') }}</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ __('Update') }}</li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('users.show', $user) }}">
+                            @if($user->id === auth()->user()->id)
+                                You
+                            @else
+                                {{ $user->name }}
+                            @endif
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __('Edit') }}</li>
                 </ol>
             </nav>
 
-            <h1 class="display-4 mt-5 mb-2">{{ $user->name }} <small>{{ __('Update') }}</small></h1>
+            <h1 class="display-4 mt-5 mb-2">{{ $user->name }}</h1>
+            <h4>{{ $user->email }}</h4>
 
             <p class="lead mb-5">
-                Change your current profile details.
+                @if(auth()->user() == $user)
+                {{ __('You') }}
+                @elseif($user->is_admin) 
+                    {{ __('Administrator') }}
+                @else
+                {{ __('User') }}
+                @endif
+                ─ {{ $user->created_at->diffForHumans() }}
             </p>
 
-            <input type="hidden" name="_method" value="PUT">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <h2 class="display-5 mt-5 mb-2">Details</h1>
+
+
+            <p class="lead mb-5">
+                @if($user->id === auth()->user()->id)
+                    Change your details.
+                @else
+                    Change this user details.
+                @endif
+            </p>
 
             <div class="form-group">
                 <label for="name">Name</label>
@@ -30,33 +55,32 @@
                 id="name" 
                 type="text" 
                 name="name" 
-                value="{{ $user->name }}">
+                v-model="name">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
                 <input class="form-control" 
                 id="password" 
                 type="password" 
-                name="password">
+                name="password"
+                v-model="password">
             </div>
             <div class="form-group">
                 <label for="password_confirmation">Confirm Password</label>
                 <input class="form-control" 
                 id="password_confirmation" 
                 type="password" 
-                name="password_confirmation">
+                name="password_confirmation"
+                v-model="password_confirmation">
             </div>
 
-            <button class="btn btn-primary" type="submit">
-                <i class="fa fa-save">&nbsp;</i> Save
+            <button class="btn btn-primary" type="button" @click="updateDetails()">
+                <i class="fa fa-save">&nbsp;</i> Update
             </button>
-
-            <a class="btn btn-secondary" href="{{ route('users.show', $user) }}">
-                <i class="fa fa-chevron-left">&nbsp;</i> Back
-            </a>
         </div>
         
     </div>
 </form>
 </div>
+</user-management>
 @endsection

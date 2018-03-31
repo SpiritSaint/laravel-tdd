@@ -10,7 +10,7 @@
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('admin') }}">{{ __('Administration') }}</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">{{ __('Users') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Show</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __('Show') }}</li>
                 </ol>
             </nav>
 

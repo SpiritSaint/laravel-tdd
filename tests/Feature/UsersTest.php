@@ -57,6 +57,6 @@ class UsersTest extends TestCase
                             'password_confirmation' => $password,
                         ]);
 
-        $response->assertRedirect('/users/'. $user->id);
+        $response->assertStatus(200);
     }
 }
