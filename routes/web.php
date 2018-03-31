@@ -23,4 +23,6 @@ Route::resource('users', 'UsersController', ['only' => [
     'index', 'show', 'edit', 'update'
 ]]);
 
+Route::get('admin', 'AdminController@index')->name('admin');
+
 Route::resource('admin/users', 'Admin\UsersController', ['as' => 'admin']);
