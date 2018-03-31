@@ -10,15 +10,27 @@
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Home') }}</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('users.index') }}">{{ __('Users') }}</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ __('Update') }}</li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('users.show', $user) }}">
+                            @if($user->id === auth()->user()->id)
+                                You
+                            @else
+                                {{ $user->name }}
+                            @endif
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __('Edit') }}</li>
                 </ol>
             </nav>
 
-            <h1 class="display-4 mt-5 mb-2">{{ $user->name }} <small>{{ __('Update') }}</small></h1>
+            <h1 class="display-4 mt-5 mb-2">{{ $user->name }} <small>{{ __('Edit') }}</small></h1>
 
             <p class="lead mb-5">
-                Change your current profile details.
+                @if($user->id === auth()->user()->id)
+                    Change your details.
+                @else
+                    Change this user details.
+                @endif
             </p>
 
             <input type="hidden" name="_method" value="PUT">
@@ -48,12 +60,8 @@
             </div>
 
             <button class="btn btn-primary" type="submit">
-                <i class="fa fa-save">&nbsp;</i> Save
+                <i class="fa fa-save">&nbsp;</i> Update
             </button>
-
-            <a class="btn btn-secondary" href="{{ route('users.show', $user) }}">
-                <i class="fa fa-chevron-left">&nbsp;</i> Back
-            </a>
         </div>
         
     </div>
