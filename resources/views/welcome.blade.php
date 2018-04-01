@@ -5,17 +5,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Laravel TDD</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
+                background-color: #f4645f;
+                color: #fff;
+                font-family: 'Roboto', sans-serif;
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
@@ -46,17 +46,19 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 64px;
+                text-shadow: -2px 2px 0px rgba(0,0,0,.25);
             }
 
             .links > a {
-                color: #636b6f;
-                padding: 0 25px;
+                color: #fff;
+                padding: 0 50px;
                 font-size: 12px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+                text-shadow: 0px 1px 0px rgba(0,0,0,.25);
             }
 
             .m-b-md {
@@ -79,17 +81,31 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    &nbsp;
+                    <span class="typed"></span>
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="/docs">Documentation</a>
+                    <a href="/features">Features</a>
+                    <a href="/installation">Installation</a>
+                    <a href="https://github.com/demency/laravel-tdd">GitHub</a>
                 </div>
             </div>
         </div>
     </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.6/typed.min.js"></script>
+    <script>
+        var options = {
+            strings: ["Laravel + Test Driven Developments", "Laravel TDD"],
+            typeSpeed: 150,
+            backSpeed: 75,
+            smartBackspace: true,
+            loop: false,
+            cursorChar: '',
+            shuffle: false,
+        }
+
+        var typed = new Typed(".typed", options);
+    </script>
 </html>

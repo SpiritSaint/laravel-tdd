@@ -8,7 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel TDD') }}</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,600" rel="stylesheet" type="text/css">
 
     <!-- Icons -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
