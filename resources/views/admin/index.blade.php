@@ -24,9 +24,6 @@
                         <div class="card-body">
                             <a href="{{ route('admin.users.index') }}" 
                                 class="btn btn-primary btn-lg btn-block">
-                                <div class="fa-3x text-center">
-                                  <i class="fas fa-spinner fa-users">&nbsp;</i>
-                                </div>
                                 {{ __('Users') }}
                             </a>
                         </div>

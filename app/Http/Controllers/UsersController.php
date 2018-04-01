@@ -8,12 +8,24 @@ use App\Http\Requests\Users\EditRequest;
 use App\Http\Requests\Users\ShowRequest;
 use App\Http\Requests\Users\UpdateRequest;
 
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * Class UsersController
+ * @package App\Http\Controllers
+ */
 class UsersController extends Controller
 {
+    /**
+     * @var User
+     */
     protected $users;
 
+    /**
+     * UsersController constructor.
+     * @param User $users
+     */
     public function __construct(User $users)
     {
         $this->users = $users;
@@ -23,7 +35,7 @@ class UsersController extends Controller
     /**
      * Display a listing of the user.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -35,8 +47,9 @@ class UsersController extends Controller
     /**
      * Display the specified user.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param ShowRequest $request
+     * @param User $user
+     * @return Response
      */
     public function show(ShowRequest $request, User $user)
     {
@@ -46,8 +59,9 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified user.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param EditRequest $request
+     * @param User $user
+     * @return Response
      */
     public function edit(EditRequest $request, User $user)
     {
@@ -57,9 +71,9 @@ class UsersController extends Controller
     /**
      * Update the specified user in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param UpdateRequest $request
+     * @param User $user
+     * @return User
      */
     public function update(UpdateRequest $request, User $user)
     {

@@ -35,9 +35,10 @@
                     <tbody>
                         <tr>
                             <td>
-                                {{ $user->name }} &boxh;
+                                {{ $user->name }}
                                 @if(auth()->user() == $user)
                                 <small>
+                                    &boxh;
                                     {{ __('You') }}
                                 </small>
                                 @endif
