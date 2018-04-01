@@ -27,4 +27,4 @@ cache:
     - vendor
     
 env:
-  - TRAVIS_NODE_VERSION="8"
+  - TRAVIS_NODE_VERSION="9"

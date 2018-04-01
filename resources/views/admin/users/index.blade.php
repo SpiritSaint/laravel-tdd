@@ -50,7 +50,6 @@
                         </td>
                         <td class="text-right">
                             <a class="btn btn-light" href="{{ route('admin.users.show', $user) }}">
-                                <i class="fa fa-search">&nbsp;</i>
                                 View
                             </a>
                         </td>
